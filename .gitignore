@@ -1,0 +1,5 @@
+# Project exclude paths
+/provider/target/
+/share/target/
+/target/
+/web/target/
