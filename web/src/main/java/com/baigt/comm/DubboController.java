@@ -64,6 +64,7 @@ import org.springframework.web.bind.annotation.RestController;
       </exclusion>
       </exclusions>
   </dependency>
+ * @author baigt mail:baiguantao@126.com
  */
 @RestController
 @RequestMapping("/dubbotohttp/")
@@ -310,6 +311,9 @@ class DubboEntity {
     }
 }
 
+/**
+ *  for remove class
+ */
 class PojoUtil {
 
     public static Object generalize(Object pojo) {
