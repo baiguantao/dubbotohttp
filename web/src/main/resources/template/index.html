@@ -1,96 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
-<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<html lang="zh-CN">
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 <script src="/static/Common.js"></script>
 <script src="../static/jsonFormater.js" type="text/javascript"></script>
 <link href="../static/jsonFormater.css" type="text/css" rel="stylesheet"/>
+<style>
+    .pad {
+        padding: 15px 15px 15px;
+    }
+</style>
 <body>
-<blockquote class="layui-elem-quote">主页</blockquote>
+
 
 <div id="main-content" class="container">
-    <h2>消费</h2>
-    <div class="row">
-        <div>服务名</div>
-        <select id="consumers" onchange="getConsumerMethod()">
-            <option value="">-------------------</option>
-        </select>
-
-
-    </div>
-    <div class="row">
-        <div>方法名</div>
-
-        <select id="methods" onchange="getConsumerDetail()">
-            <option value="">-------------------</option>
-        </select>
-    </div>
-    <div class="row">
-        <div>详情</div>
-
-        <select id="desc" onchange="">
-            <option value="">-------------------</option>
-        </select>
-    </div>
-    <div class="row">
-        <textarea name="" id="parameterTypesDemo" cols="300" rows="10"></textarea>
-    </div>
-    <div class="row">
-        <div>URL</div>
-        <textarea name="" id="consumersurl" cols="300" rows="2">dubbo://127.0.0.1:10010</textarea>
-    </div>
-    <div class="row">
-        <button onclick="invokeConsumerDubbo()">消费端调用</button>
+    <div class="page-header">
+        <h1>Dubbo转Http <small>工具</small></h1>
     </div>
 
-    <div>
-        <h4>结果</h4>
-        <pre id="consumersResult"></pre>
+    <div class="panel panel-primary">
+        <div class="panel-heading">消费</div>
+        <div class="panel-body">
+            <form action="">
+                <div class="row form-group pad">
+                    <label>服务名</label>
+                    <select class="form-control" id="consumers" onchange="getConsumerMethod()">
+                        <option value="">-------------------</option>
+                    </select>
+
+
+                </div>
+                <div class="row form-group pad">
+                    <label>方法名</label>
+
+                    <select class="form-control" id="methods" onchange="getConsumerDetail()">
+                        <option value="">-------------------</option>
+                    </select>
+                </div>
+                <div class="row form-group pad">
+                    <label>详情</label>
+
+                    <select class="form-control" id="desc" onchange="">
+                        <option value="">-------------------</option>
+                    </select>
+                </div>
+                <div class="row form-group pad">
+                    <textarea class="form-control" name="" id="parameterTypesDemo" cols="300" rows="10"></textarea>
+                </div>
+                <div class="row form-group pad">
+                    <label>URL</label>
+                    <textarea class="form-control" name="" id="consumersurl" cols="300"
+                              rows="2">dubbo://127.0.0.1:10010</textarea>
+                </div>
+                <div class="row form-group pad">
+                    <a class="btn btn-primary" onclick="invokeConsumerDubbo()">消费端调用</a>
+                </div>
+            </form>
+            <div>
+                <h4>结果</h4>
+                <pre id="consumersResult">默认结果</pre>
+            </div>
+        </div>
     </div>
     <br>
     <br>
     <br>
     <hr>
 
-    <h2>生产者</h2>
-    <div class="row">
-        <div>服务名</div>
-        <select id="providers" onchange="getProvidersMethod()">
-            <option value="">-------------------</option>
-        </select>
+    <div class="panel panel-primary">
+        <div class="panel-heading">生产者</div>
+        <div class="panel-body">
+            <div class="row form-group pad">
+                <label>服务名</label>
+                <select class="form-control" id="providers" onchange="getProvidersMethod()">
+                    <option value="">-------------------</option>
+                </select>
+                <div class="row form-group pad">
+                    <label>方法名</label>
+                    <select class="form-control" id="providersMethods" onchange="getProvidersDetail()">
+                        <option value="">-------------------</option>
+                    </select>
+                </div>
+                <div class="row form-group pad">
+                    <label>详情</label>
+                    <select class="form-control" id="providersDesc" onchange="">
+                        <option value="">-------------------</option>
+                    </select>
+                </div>
+                <div class="row form-group pad">
+                    <textarea class="form-control" name="" id="providersParameterTypesDemo" cols="300"
+                              rows="10"></textarea>
+                </div>
+                <div class="row form-group pad">
+                    <label>URL</label>
+                    <textarea class="form-control" name="" id="providersurl" cols="300"
+                              rows="2">dubbo://127.0.0.1:20880</textarea>
+                </div>
+                <div class="row form-group pad">
+                    <a class="btn btn-primary" onclick="invokeProvidersDubbo()">生产端调用</a>
+                </div>
+                <div>
+                    <h4>结果</h4>
+                    <pre id="providersResult" >默认结果</pre>
+                </div>
+        </div>
+    </div>
+    </div>
+        <hr>
 
-
-    </div>
-    <div class="row">
-        <div>方法名</div>
-
-        <select id="providersMethods" onchange="getProvidersDetail()">
-            <option value="">-------------------</option>
-        </select>
-    </div>
-    <div class="row">
-        <div>详情</div>
-
-        <select id="providersDesc" onchange="">
-            <option value="">-------------------</option>
-        </select>
-    </div>
-    <div class="row">
-        <textarea name="" id="providersParameterTypesDemo" cols="300" rows="10"></textarea>
-    </div>
-    <div class="row">
-        <div>URL</div>
-        <textarea name="" id="providersurl" cols="300" rows="2">dubbo://127.0.0.1:20880</textarea>
-    </div>
-    <div class="row">
-        <button onclick="invokeProvidersDubbo()">生产端调用</button>
-    </div>
-    <div>
-        <h4>结果</h4>
-        <pre id="providersResult"></pre>
-    </div>
-
-
-    <div class="row">
+    <div class="row form-group pad bg-info">
         <div>注意：</div>
         <p>字符串要用英文引号""包括</p>
         <p>多个入参，可以"换行"传入调用</p>

@@ -8,7 +8,7 @@
     <dubbo:application name="test"/>
     <!-- 使用zookeeper注册中心暴露服务地址 -->
 <!--    <dubbo:registry address="zookeeper://192.168.99.51:2183?backup=192.168.99.37:2183"/>-->
-    <dubbo:registry address="multicast://224.5.6.7:1234"/>
+    <dubbo:registry address="zookeeper://192.168.99.51:2183?backup=192.168.99.37:2183"/>
     <!-- 第三方filter  跟提供方公用一个-->
     <dubbo:consumer check="false"/>
     <dubbo:reference interface="com.baigt.share.PersonService" id="personService"></dubbo:reference>
