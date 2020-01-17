@@ -16,6 +16,18 @@
     .pad {
         padding: 15px 15px 15px;
     }
+
+    .bs-callout-info {
+        border-left-color: #1b809e !important;
+    }
+
+    .bs-callout {
+        padding: 20px;
+        margin: 20px 0;
+        border: 1px solid #eee;
+        border-left-width: 5px;
+        border-radius: 3px;
+    }
 </style>
 <body>
 
@@ -52,12 +64,13 @@
                     </select>
                 </div>
                 <div class="row form-group pad">
-                    <textarea class="form-control" name="" id="parameterTypesDemo" cols="300" rows="10"></textarea>
+                    <textarea class="form-control" name="" id="parameterTypesDemo" cols="300" rows="10"
+                              placeholder='字符串要用英文引号""包括;多个入参，可以"换行"传入调用'></textarea>
                 </div>
                 <div class="row form-group pad">
                     <label>URL</label>
                     <textarea class="form-control" name="" id="consumersurl" cols="300"
-                              rows="2">dubbo://127.0.0.1:10010</textarea>
+                              rows="1" placeholder='dubbo://127.0.0.1:20880'>dubbo://127.0.0.1:10010</textarea>
                 </div>
                 <div class="row form-group pad">
                     <a class="btn btn-primary" onclick="invokeConsumerDubbo()">消费端调用</a>
@@ -96,41 +109,53 @@
                 </div>
                 <div class="row form-group pad">
                     <textarea class="form-control" name="" id="providersParameterTypesDemo" cols="300"
-                              rows="10"></textarea>
+                              rows="10" placeholder='字符串要用英文引号""包括;多个入参，可以"换行"传入调用'></textarea>
                 </div>
                 <div class="row form-group pad">
                     <label>URL</label>
                     <textarea class="form-control" name="" id="providersurl" cols="300"
-                              rows="2">dubbo://127.0.0.1:20880</textarea>
+                              rows="1" placeholder='dubbo://127.0.0.1:20880'>dubbo://127.0.0.1:20880</textarea>
                 </div>
                 <div class="row form-group pad">
                     <a class="btn btn-primary" onclick="invokeProvidersDubbo()">生产端调用</a>
                 </div>
                 <div>
                     <h4>结果</h4>
-                    <pre id="providersResult" >默认结果</pre>
+                    <pre id="providersResult">默认结果</pre>
                 </div>
+            </div>
         </div>
     </div>
-    </div>
-        <hr>
+    <hr>
 
-    <div class="row form-group pad bg-info">
-        <div>注意：</div>
-        <p>字符串要用英文引号""包括</p>
-        <p>多个入参，可以"换行"传入调用</p>
-        <div>使用示例 1</div>
-        <p>xxService.XxMethod(String id)</p>
-        <p>"24dda18ae18245c1b272e2df1981678b"</p>
-        <div>使用示例 2</div>
-        <p>xxService.XxMethod(String uuid,int id)</p>
-        <pre>"24dda18ae18245c1b272e2df1981678b"
-            2019s
+    <div class="row pad">
+
+        <label>注意：</label>
+        <div class="bs-callout bs-callout-info">
+            <p>字符串要用英文引号""包括</p>
+            <p>多个入参，可以"换行"传入调用</p>
+        </div>
+        <label>使用示例 1</label>
+        <div class="bs-callout bs-callout-info">
+            <p>xxService.XxMethod(String id)</p>
+            <p>"24dda18ae18245c1b272e2df1981678b"</p>
+
+        </div>
+
+        <label>使用示例 2</label>
+        <div class="bs-callout bs-callout-info">
+
+            <p>xxService.XxMethod(String uuid,int id)</p>
+            <pre>
+"24dda18ae18245c1b272e2df1981678b"
+2019s
         </pre>
-        <div>使用示例 2</div>
-        <p>xxService.XxMethod(XxxCreateParams)</p>
-        <pre>{"uuid":null,"supplierIds":null,"subBizId":null,"businessName":null,"sourceId":null,"sourceName":null,"bizName":null,"bizType":null,"ext":null,"modifier":null}
-        </pre>
+        </div>
+        <label>使用示例 3</label>
+        <div class="bs-callout bs-callout-info">
+            <p>xxService.XxMethod(XxxCreateParams)</p>
+            <pre>{"uuid":null,"supplierIds":null,"subBizId":null,"businessName":null,"sourceId":null,"sourceName":null,"bizName":null,"bizType":null,"ext":null,"modifier":null}</pre>
+        </div>
     </div>
 </div>
 </body>
