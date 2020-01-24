@@ -23,5 +23,6 @@ public class MainStarter {
         //关闭日志banner日志打印
         springApplication.setBannerMode(Banner.Mode.OFF);
         ConfigurableApplicationContext run = springApplication.run(args);
+        System.out.println("dubbo to http tools start success");
     }
 }

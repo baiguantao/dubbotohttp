@@ -8,8 +8,8 @@
     <dubbo:application name="hello-world-app"/>
 
     <!-- 使用multicast广播注册中心暴露服务地址 -->
-    <dubbo:registry address="zookeeper://192.168.99.51:2183?backup=192.168.99.37:2183"/>
-
+    <!--<dubbo:registry address="zookeeper://192.168.99.51:2183?backup=192.168.99.37:2183"/>-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
     <!-- 用dubbo协议在10010端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="10010"/>
 

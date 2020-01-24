@@ -1,6 +1,7 @@
 /**
  * 公共js工具类
  * */
+document.write("<script type='text/javascript' src='https://cdn.bootcss.com/layer/1.8.5/layer.min.js'></script>");
 var baigt={
     //版本
     version:function(){
@@ -127,7 +128,7 @@ var baigt={
     },
     //公共弹窗
     msg:function(text,callback){
-        console.info("--- msg");
+        layer.msg(text);
         setTimeout(function(){
             if (!!callback) {
                 var  func=eval(callback);
@@ -137,9 +138,7 @@ var baigt={
     },
     //公共弹窗 不关闭的错误提示
     msg:function(text){
-        console.info(text, {
-            icon: 2
-        })
+        layer.msg(text);
     },/*
      配合img的onerror方法使用
      * obj为图片对象

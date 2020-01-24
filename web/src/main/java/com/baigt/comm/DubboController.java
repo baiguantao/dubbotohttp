@@ -213,15 +213,16 @@ public class DubboController implements ApplicationContextAware {
                     paramTypes = null;
                 }
                 result = reference.get().$invoke(dubboEntity.getMethod(), paramTypes, objectArray);
+                data.put("result", PojoUtil.generalize(result));
             } else {
-
                 if (paramTypes.length == 0 || "无入参".equals(parameterTypes)) {
                     result = methodInstance.invoke(instance);
                 } else {
                     result = methodInstance.invoke(instance, getObjectArray(dubboEntity, paramTypes));
                 }
+                data.put("result", result);
             }
-            data.put("result", PojoUtil.generalize(result));
+
         } catch (Exception e) {
            data.put("result",e.getMessage());
         }
